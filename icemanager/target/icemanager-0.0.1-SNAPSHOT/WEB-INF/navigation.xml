@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd"
+	version="4.0">
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>start</from-outcome>
+			<to-view-id>start.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>orderstoday</from-outcome>
+			<to-view-id>orderstoday.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>orderstomorrow</from-outcome>
+			<to-view-id>orderstomorrow.xhtml</to-view-id>
+		</navigation-case>
+		
+			<navigation-case>
+			<from-outcome>ordersaftertomorrow</from-outcome>
+			<to-view-id>ordersaftertomorrow.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>ordersall</from-outcome>
+			<to-view-id>ordersall.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>stock</from-outcome>
+			<to-view-id>stock.xhtml</to-view-id>
+		</navigation-case>
+
+
+	</navigation-rule>
+
+</faces-config>

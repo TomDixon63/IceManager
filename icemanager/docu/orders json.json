@@ -1,0 +1,121 @@
+	{
+	"id": "15213659",
+	"objectName": "Order",
+	"additionalInformation": null,
+	"create": "2024-02-19T12:21:18+01:00",
+	"update": "2024-02-19T12:21:28+01:00",
+	"orderNumber": "LI-24-112",
+	"contact": {
+		"id": "70003259",
+		"objectName": "Contact"
+	},
+	"orderDate": "2024-02-19T12:21:18+01:00",
+	"status": "500",
+	"header": "Lieferschein Nr. LI-24-112 aus Auftragsbestätigung AB-24-217",
+	"headText": "<p>Sehr geehrte Damen und Herren,</p><p>Vielen Dank für Ihre Bestellung bei uns.</p>",
+	"footText": "<p>Für Rückfragen stehen wir Ihnen jederzeit gerne zur Verfügung.<br>Wir bedanken uns sehr für Ihr Vertrauen.</p><p>Mit freundlichen Grüßen<br>[%KONTAKTPERSON%]</p>",
+	"addressName": "Vinaturel GmbH",
+	"addressStreet": null,
+	"addressZip": null,
+	"addressCity": null,
+	"addressCountry": {
+		"id": "1",
+		"objectName": "StaticCountry"
+	},
+	"createUser": {
+		"id": "844144",
+		"objectName": "SevUser"
+	},
+	"sevClient": {
+		"id": "692471",
+		"objectName": "SevClient"
+	},
+	"deliveryTerms": "19.02.2024",
+	"paymentTerms": null,
+	"origin": {
+		"id": "15213648",
+		"objectName": "Order"
+	},
+	"version": "0",
+	"smallSettlement": "0",
+	"contactPerson": {
+		"id": "844144",
+		"objectName": "SevUser"
+	},
+	"taxRate": "0",
+	"taxText": "0",
+	"addressParentName": null,
+	"taxType": "default",
+	"orderType": "LI",
+	"sendDate": "2024-02-19T12:21:28+01:00",
+	"addressParentName2": null,
+	"addressName2": null,
+	"addressGender": null,
+	"address": "Vinaturel GmbH\nSchatzlgasse 30\n82335 Berg",
+	"currency": "EUR",
+	"sumNet": "104",
+	"sumTax": "19.76",
+	"sumGross": "123.76",
+	"sumDiscounts": "0",
+	"sumNetForeignCurrency": "0",
+	"sumTaxForeignCurrency": "0",
+	"sumGrossForeignCurrency": "0",
+	"sumDiscountsForeignCurrency": "0",
+	"weight": "0",
+	"customerInternalNote": null,
+	"showNet": "1",
+	"sendType": "VPDF",
+	"sumDiscountNet": "0",
+	"sumDiscountGross": "0",
+	"sumDiscountNetForeignCurrency": "0",
+	"sumDiscountGrossForeignCurrency": "0",
+	"positions": [
+		{
+			"id": "72045089",
+			"objectName": "OrderPos",
+			"additionalInformation": null,
+			"create": "2024-02-19T12:21:18+01:00",
+			"update": "2024-02-19T12:21:21+01:00",
+			"order": {
+				"id": "15213659",
+				"objectName": "Order"
+			},
+			"part": {
+				"id": "21879328",
+				"objectName": "Part"
+			},
+			"quantity": "80",
+			"price": "1.3",
+			"priceNet": "1.3",
+			"priceTax": "0.247",
+			"priceGross": "1.547",
+			"name": "Würfeleis",
+			"priority": "100",
+			"unity": {
+				"id": "4",
+				"objectName": "Unity"
+			},
+			"sevClient": {
+				"id": "692471",
+				"objectName": "SevClient"
+			},
+			"positionNumber": "0",
+			"text": "2x 40 Kg Box\nLieferort: SkyKöln, Deutz, 28.Etage. Im Köln Triangle Turm, Ottoplatz 1 · 50679 Köln",
+			"discount": "0",
+			"isPercentage": "1",
+			"discountedValue": null,
+			"optional": "0",
+			"optionalChargeable": "0",
+			"taxRate": "19",
+			"sumNet": "104",
+			"sumGross": "123.76",
+			"sumTax": "19.76",
+			"sumDiscount": "0",
+			"sumNetForeignCurrency": "0",
+			"sumTaxForeignCurrency": "0",
+			"sumGrossForeignCurrency": "0",
+			"sumDiscountForeignCurrency": "0",
+			"createNextPart": null
+		}
+	]
+}
