@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-//{"w2BCount":9991,"w5BCount":57612,"w15BCount":220,"wlCount":23,"c2BCount":331,"c5BCount":61,"c15BCount":"6666","clCount":"333","lastupdate":"12.03.2024 16:58"}
+//{"w2BCount":9991,"w5BCount":57612,"w15BCount":220,"wlCount":23,"c2BCount":331,"c5BCount":61,"c15BCount":"6666","clCount":"333","lastupdate":12032024}
 
 public class Stock implements Serializable {
 
@@ -32,15 +32,16 @@ public class Stock implements Serializable {
 	@JsonProperty("clCount")
 	private int clCount;
 
+	// int because of mapping problems if string
 	@JsonProperty("lastupdate")
-	private String lastupdate = "";
+	private int lastupdate;
 
 	public Stock() {
 
 	}
 
 	public Stock(int w2bCount, int w5bCount, int w15bCount, int wlCount, int c2bCount, int c5bCount, int c15bCount,
-			int clCount, String lastupdate) {
+			int clCount, int lastupdate) {
 		super();
 		w2BCount = w2bCount;
 		w5BCount = w5bCount;
@@ -117,11 +118,11 @@ public class Stock implements Serializable {
 		this.clCount = clCount;
 	}
 
-	public String getLastupdate() {
+	public int getLastupdate() {
 		return lastupdate;
 	}
 
-	public void setLastupdate(String lastupdate) {
+	public void setLastupdate(int lastupdate) {
 		this.lastupdate = lastupdate;
 	}
 

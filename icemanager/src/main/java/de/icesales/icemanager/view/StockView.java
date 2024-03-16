@@ -1,10 +1,13 @@
 package de.icesales.icemanager.view;
 
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -33,25 +36,27 @@ public class StockView extends AbstractView implements Serializable {
 	}
 
 	public void actionSave() {
-		write();
+		save();
 	}
 
-	private void write() {
+	private void save() {
 		ObjectMapper mapper = new ObjectMapper();
-//		String contextpath = facesContext.getExternalContext().getRequestContextPath();
-//		String filePath = contextpath + "/WEB-INF/lagerbestand.json";
 
 		System.out.println(Util.getLocalDateTodayNowAsString());
 
 		try {
-			// Java object to JSON file
-			mapper.writeValue(new File(FILE_PATH), model);
+			String lastUpdate = StringUtils.remove(Util.getLocalDateTodayNowAsString(), ".");
+			System.out.println(lastUpdate);
+			int lastUpdateAsInt = Integer.parseInt(lastUpdate);
+			model.setLastupdate(lastUpdateAsInt);
+			mapper.writeValue(new FileOutputStream(FILE_PATH), model);
+			facesContext.addMessage("",
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Lagerbestand gespeichert!  ", null));
 		} catch (IOException e) {
 			e.printStackTrace();
+			facesContext.addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Lagerbestand konnte nicht gespeichert werden!  ", null));
 		}
-		// Java object to JSON string
-		// String jsonString = mapper.writeValueAsString(object);
-		// Files.copy(jsonString, file, StandardCopyOption.REPLACE_EXISTING);
 
 	}
 
@@ -61,10 +66,9 @@ public class StockView extends AbstractView implements Serializable {
 		ObjectMapper mapper = new ObjectMapper();
 
 		try {
-			InputStream inputStream = facesContext.getExternalContext().getResourceAsStream(FILE_PATH);
+			InputStream inputStream = new FileInputStream(FILE_PATH);
 			Map<String, Object> jsonMap = mapper.readValue(inputStream, Map.class);
 			model = mapper.convertValue(jsonMap, Stock.class);
-			System.out.println(model.toString());
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -72,24 +76,15 @@ public class StockView extends AbstractView implements Serializable {
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Lagerbestand konnte nicht gelesen werden!  ", null));
 		}
 
-		/*
-		 * File file = new File("/path/to/file.ext"); String fileName = file.getName();
-		 * String contentType =facesContext.getExternalContext().getMimeType(fileName);
-		 * int contentLength = (int) file.length();
-		 * 
-		 * 
-		 * 
-		 * Files.copy(file.toPath(), output);
-		 */
+	}
 
-//		File file = new File(this.getClass().getClassLoader().getResource("lagerbestand.json").getFile());
-//	
-//		try {
-//			ProductsModel model = mapper.readValue(file, ProductsModel.class);
-//			System.out.println(model.toString());
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+	public String getLastUpdate() {
+		String lu = String.valueOf(model.getLastupdate());
+		String day = lu.substring(0, 2);
+		String month = lu.substring(2, 4);
+		String year = lu.substring(4, 8);
+		String lun = day + "." + month + "." + year;
+		return lun;
 
 	}
 

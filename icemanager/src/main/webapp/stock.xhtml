@@ -13,7 +13,7 @@
 	<ui:define name="content">
 
 		<p:panel
-			header="Lagerbestand"
+			header="Lagerbestand - Letzte Aktualisierung: #{stockView.getLastUpdate()}"
 			style="margin-top: 2rem">
 			<h:form>
 				<div
@@ -48,6 +48,7 @@
 
 				</div>
 			</h:form>
+		
 		</p:panel>
 
 
