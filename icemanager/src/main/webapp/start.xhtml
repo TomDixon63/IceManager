@@ -25,7 +25,7 @@
 			<p:chip
 				label="Bestellungen heute: 44"
 				styleClass="mr-6"
-				style="font-size: 14px; font-weight: 600; color:orange"
+				style="font-size: 14px; font-weight: 400; color:orange"
 				icon="pi pi-shopping-cart" />
 			<p:chip
 				label="Bestellungen morgen: 144"
@@ -41,10 +41,50 @@
 				icon="pi pi-shopping-cart" />
 
 		</div>
-	
-		<p:panel header="Starteite - Überblick Bestellungen">
 
+		<p:panel header="Startseite - Überblick Bestellungen (Heute, Morgen, Übermorgen, Alle = Bestand minus Bestellungen)">
 
+			<p:dataTable
+				var="stockposition"
+				value="#{startView.stockOverviewList}">
+
+				<p:column
+					style="width:10rem"
+					headerText="Produkt">
+					<h:outputText value="#{stockposition.product}" />
+				</p:column>
+
+				<p:column
+					style="width:10rem"
+					headerText="Bestand">
+				
+				</p:column>
+				
+				<p:column
+					style="width:10rem"
+					headerText="Heute">
+				
+				</p:column>
+				
+				<p:column
+					style="width:10rem"
+					headerText="Morgen">
+				
+				</p:column>
+				
+				<p:column
+					style="width:10rem"
+					headerText="Übermorgen">
+				
+				</p:column>
+				
+				<p:column
+					style="width:10rem"
+					headerText="Alle">
+				
+				</p:column>
+
+			</p:dataTable>
 
 		</p:panel>
 

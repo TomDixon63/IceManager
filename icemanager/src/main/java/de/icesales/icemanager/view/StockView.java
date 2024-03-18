@@ -1,17 +1,12 @@
 package de.icesales.icemanager.view;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
-import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import de.icesales.icemanager.model.jsonschema2pojo.Stock;
+import de.icesales.icemanager.service.StockService;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -25,34 +20,32 @@ public class StockView extends AbstractView implements Serializable {
 	@Inject
 	FacesContext facesContext;
 
-	private Stock model;
+	@Inject
+	transient StockService stockService;
 
-	private final static String FILE_PATH = "C:\\icemanager\\lagerbestand.json";
+	private Stock stock;
 
 	@PostConstruct
 	public void postConstruct() {
-		model = new Stock();
-		read();
+		readStock();
 	}
 
 	public void actionSave() {
-		save();
+		saveStock();
 	}
 
-	private void save() {
-		ObjectMapper mapper = new ObjectMapper();
-
-		System.out.println(Util.getLocalDateTodayNowAsString());
-
+	private void saveStock() {
+		String lastUpdate = StringUtils.remove(Util.getLocalDateTodayNowAsString(), ".");
 		try {
-			String lastUpdate = StringUtils.remove(Util.getLocalDateTodayNowAsString(), ".");
-			System.out.println(lastUpdate);
+
 			int lastUpdateAsInt = Integer.parseInt(lastUpdate);
-			model.setLastupdate(lastUpdateAsInt);
-			mapper.writeValue(new FileOutputStream(FILE_PATH), model);
+			stock.setLastupdate(lastUpdateAsInt);
+			stockService.saveStock(stock);
+			getSessionData().setStock(stock);
+
 			facesContext.addMessage("",
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Lagerbestand gespeichert!  ", null));
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			facesContext.addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Lagerbestand konnte nicht gespeichert werden!  ", null));
@@ -61,25 +54,20 @@ public class StockView extends AbstractView implements Serializable {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void read() {
-
-		ObjectMapper mapper = new ObjectMapper();
+	private void readStock() {
 
 		try {
-			InputStream inputStream = new FileInputStream(FILE_PATH);
-			Map<String, Object> jsonMap = mapper.readValue(inputStream, Map.class);
-			model = mapper.convertValue(jsonMap, Stock.class);
-
+			stock = stockService.readStock();
+			getSessionData().setStock(stock);
 		} catch (IOException e) {
 			e.printStackTrace();
 			facesContext.addMessage("",
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Lagerbestand konnte nicht gelesen werden!  ", null));
 		}
-
 	}
 
 	public String getLastUpdate() {
-		String lu = String.valueOf(model.getLastupdate());
+		String lu = String.valueOf(stock.getLastupdate());
 		String day = lu.substring(0, 2);
 		String month = lu.substring(2, 4);
 		String year = lu.substring(4, 8);
@@ -88,12 +76,12 @@ public class StockView extends AbstractView implements Serializable {
 
 	}
 
-	public Stock getModel() {
-		return model;
+	public Stock getStock() {
+		return stock;
 	}
 
-	public void setModel(Stock model) {
-		this.model = model;
+	public void setStock(Stock stock) {
+		this.stock = stock;
 	}
 
 }

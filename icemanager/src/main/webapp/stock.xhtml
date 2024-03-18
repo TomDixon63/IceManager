@@ -18,37 +18,155 @@
 			<h:form>
 				<div
 					class="ui-fluid formgrid grid"
-					style="width: 15rem">
+					style="width: 40rem">
 
 					<div class="field col-12 md:col-12">
-						<p:outputLabel
-							for="input1"
-							value="2-Kg-Beutel-Würfeleis" />
-						<p:inputNumber
-							id="input1"
-							value="#{stockView.model.w2BCount}"
-							minValue="0"
-							decimalPlaces="0" />
+						<p:panelGrid>
+							<p:column style="width:15rem">
+								<p:outputLabel
+									for="input1"
+									value="2-Kg-Beutel-Würfeleis" />
+
+							</p:column>
+							<p:column style="width:10rem">
+								<p:inputNumber
+									id="input1"
+									value="#{stockView.stock.w2BCount}"
+									minValue="0"
+									decimalPlaces="0" />
+							</p:column>
+						</p:panelGrid>
 					</div>
 
 					<div class="field col-12 md:col-12">
-						<p:outputLabel
-							for="input2"
-							value="5-Kg-Beutel-Würfeleis" />
-						<p:inputNumber
-							id="input2"
-							value="#{stockView.model.w5BCount}"
-							minValue="0"
-							decimalPlaces="0" />
+						<p:panelGrid>
+							<p:column style="width:15rem">
+								<p:outputLabel
+									for="input2"
+									value="5-Kg-Beutel-Würfeleis" />
+							</p:column>
+							<p:column style="width:10rem">
+								<p:inputNumber
+									id="input2"
+									value="#{stockView.stock.w5BCount}"
+									minValue="0"
+									decimalPlaces="0" />
+							</p:column>
+						</p:panelGrid>
 					</div>
-					
+
 					<div class="field col-12 md:col-12">
-					<p:commandButton icon="pi pi-check" value="Speichern" action="#{stockView.actionSave()}"/>
+						<p:panelGrid>
+							<p:column style="width:15rem">
+								<p:outputLabel
+									for="input3"
+									value="15-Kg-Beutel-Würfeleis" />
+							</p:column>
+							<p:column style="width:10rem">
+								<p:inputNumber
+									id="input3"
+									value="#{stockView.stock.w15BCount}"
+									minValue="0"
+									decimalPlaces="0" />
+							</p:column>
+						</p:panelGrid>
+					</div>
+
+					<div class="field col-12 md:col-12">
+						<p:panelGrid>
+							<p:column style="width:15rem">
+								<p:outputLabel
+									for="input4"
+									value="Würfeleis (kg)" />
+							</p:column>
+							<p:column style="width:10rem">
+								<p:inputNumber
+									id="input4"
+									value="#{stockView.stock.wlCount}"
+									minValue="0"
+									decimalPlaces="0" />
+							</p:column>
+						</p:panelGrid>
+					</div>
+
+					<div class="field col-12 md:col-12">
+						<p:panelGrid>
+							<p:column style="width:15rem">
+								<p:outputLabel
+									for="input5"
+									value="2-Kg-Beutel-Crushed-Eis" />
+							</p:column>
+							<p:column style="width:10rem">
+								<p:inputNumber
+									id="input5"
+									value="#{stockView.stock.c2BCount}"
+									minValue="0"
+									decimalPlaces="0" />
+							</p:column>
+						</p:panelGrid>
+					</div>
+
+					<div class="field col-12 md:col-12">
+						<p:panelGrid>
+							<p:column style="width:15rem">
+								<p:outputLabel
+									for="input6"
+									value="5-Kg-Beutel-Crushed-Eis" />
+							</p:column>
+							<p:column style="width:10rem">
+								<p:inputNumber
+									id="input6"
+									value="#{stockView.stock.c5BCount}"
+									minValue="0"
+									decimalPlaces="0" />
+							</p:column>
+						</p:panelGrid>
+					</div>
+
+					<div class="field col-12 md:col-12">
+						<p:panelGrid>
+							<p:column style="width:15rem">
+								<p:outputLabel
+									for="input7"
+									value="15-Kg-Beutel-Crushed-Eis" />
+							</p:column>
+							<p:column style="width:10rem">
+								<p:inputNumber
+									id="input7"
+									value="#{stockView.stock.c15BCount}"
+									minValue="0"
+									decimalPlaces="0" />
+							</p:column>
+						</p:panelGrid>
+					</div>
+
+					<div class="field col-12 md:col-12">
+						<p:panelGrid>
+							<p:column style="width:15rem">
+								<p:outputLabel
+									for="input8"
+									value="Crushed-Eis (kg)" />
+							</p:column>
+							<p:column style="width:10rem">
+								<p:inputNumber
+									id="input8"
+									value="#{stockView.stock.clCount}"
+									minValue="0"
+									decimalPlaces="0" />
+							</p:column>
+						</p:panelGrid>
+					</div>
+
+					<div class="field col-12 md:col-6">
+						<p:commandButton
+							icon="pi pi-check"
+							value="Speichern"
+							action="#{stockView.actionSave()}" />
 					</div>
 
 				</div>
 			</h:form>
-		
+
 		</p:panel>
 
 

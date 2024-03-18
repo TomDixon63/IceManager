@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.icesales.icemanager.model.jsonschema2pojo.OrderBase;
+import de.icesales.icemanager.model.jsonschema2pojo.Stock;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 
@@ -24,20 +25,15 @@ public class SessionData implements Serializable {
 	private List<OrderBase> ordersAfterTomorrow;
 	private int ordersAfterTomorrowSize;
 
+	private Stock stock;
+
 	@PostConstruct
 	public void postConstruct() {
 		ordersAll = new ArrayList<OrderBase>();
 		ordersToday = new ArrayList<OrderBase>();
 		ordersTomorrow = new ArrayList<OrderBase>();
 		ordersAfterTomorrow = new ArrayList<OrderBase>();
-	}
-
-	public void clearOrderLists() {
-//		 if (CollectionUtils.isEmpty)
-//		 ordersAll.
-//		ordersAll.clear();
-//		ordersToday.clear();
-//		ordersTomorrow.clear();
+		stock = new Stock();
 	}
 
 	public List<OrderBase> getOrdersToday() {
@@ -102,6 +98,14 @@ public class SessionData implements Serializable {
 
 	public void setOrdersAfterTomorrowSize(int ordersAfterTomorrowSize) {
 		this.ordersAfterTomorrowSize = ordersAfterTomorrowSize;
+	}
+
+	public Stock getStock() {
+		return stock;
+	}
+
+	public void setStock(Stock stock) {
+		this.stock = stock;
 	}
 
 }

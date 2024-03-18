@@ -34,7 +34,6 @@
 				rowKey="#{order.id}"
 				reflow="true"
 				rows="8"
-				stripedRows="true"
 				paginator="true"
 				paginatorPosition="top"
 				paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink}"
@@ -68,8 +67,7 @@
 
 					<p:dataTable
 						var="position"
-						value="#{order.positions}"
-						stripedRows="false">
+						value="#{order.positions}">
 						<p:column style="width:2rem">
 							<h:outputText value="#{position.positionNumberInc}" />
 						</p:column>
