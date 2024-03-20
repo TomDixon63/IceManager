@@ -23,26 +23,27 @@
 			class="flex align-items-center flex-wrap"
 			style="margin-bottom: 2rem">
 			<p:chip
-				label="Bestellungen heute: 44"
+				label="Bestellungen heute: #{startView.ordersToday}"
 				styleClass="mr-6"
 				style="font-size: 14px; font-weight: 400; color:orange"
 				icon="pi pi-shopping-cart" />
 			<p:chip
-				label="Bestellungen morgen: 144"
+				label="Bestellungen morgen: #{startView.ordersTommorow}"
 				styleClass="mr-6"
 				icon="pi pi-shopping-cart" />
 			<p:chip
-				label="Bestellungen übermorgen: 134"
+				label="Bestellungen übermorgen: #{startView.ordersAfterTommorow}"
 				styleClass="mr-6"
 				icon="pi pi-shopping-cart" />
 			<p:chip
-				label="Alle Bestellungen: 777"
+				label="Alle Bestellungen: #{startView.ordersAll}"
 				styleClass="mr-6"
 				icon="pi pi-shopping-cart" />
 
 		</div>
 
-		<p:panel header="Startseite - Überblick Bestellungen (Heute, Morgen, Übermorgen, Alle = Bestand minus Bestellungen)">
+		<p:panel
+			header="Startseite - Überblick Bestellungen (Heute, Morgen, Übermorgen, Alle = Bestand minus Bestellungen)">
 
 			<p:dataTable
 				var="stockposition"
@@ -57,31 +58,31 @@
 				<p:column
 					style="width:10rem"
 					headerText="Bestand">
-				
+					<h:outputText value="#{stockposition.stockCount}" />
 				</p:column>
-				
+
 				<p:column
 					style="width:10rem"
 					headerText="Heute">
-				
+					<h:outputText value="#{stockposition.countToday}" style="#{stockposition.countToday lt 0 ?  'color:red': 'color:white'}"/>
 				</p:column>
-				
+
 				<p:column
 					style="width:10rem"
 					headerText="Morgen">
-				
+					<h:outputText value="#{stockposition.countTomorrow}" style="#{stockposition.countTomorrow lt 0 ?  'color:red': 'color:white'}"/>
 				</p:column>
-				
+
 				<p:column
 					style="width:10rem"
 					headerText="Übermorgen">
-				
+					<h:outputText value="#{stockposition.countAfterTomorrow}" style="#{stockposition.countAfterTomorrow lt 0 ?  'color:red': 'color:white'}"/>
 				</p:column>
-				
+
 				<p:column
 					style="width:10rem"
 					headerText="Alle">
-				
+					<h:outputText value="#{stockposition.countAll}" style="#{stockposition.countAll lt 0 ? 'color:red': 'color:white'}"/>
 				</p:column>
 
 			</p:dataTable>
