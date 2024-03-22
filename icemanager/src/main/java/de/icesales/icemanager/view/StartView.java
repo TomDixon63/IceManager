@@ -114,9 +114,6 @@ public class StartView extends AbstractView implements Serializable {
 
 		initStockOverview();
 
-		// StockOverview id0 = new StockOverview(0, ProductsEnum.W2B.getLabel(), 0, 0,
-		// 0, 0, 0);
-
 		for (List<StockOverview> list : Arrays.asList(stockOverviewList)) {
 
 			if (list.get(0).getId() == 0) {
@@ -130,10 +127,11 @@ public class StartView extends AbstractView implements Serializable {
 						for (Position p : o.getPositions()) {
 							if (StringUtils.equals(p.getName(), ProductsEnum.W2B.getLabel())) {
 								quantity = quantity + Integer.parseInt(p.getQuantity());
-								list.get(0).setCountToday(list.get(0).getStockCount() - quantity);
+
 							}
 						}
 					}
+					list.get(0).setCountToday(list.get(0).getStockCount() - quantity);
 				} else {
 					list.get(0).setCountToday(list.get(0).getStockCount());
 				}
@@ -144,10 +142,11 @@ public class StartView extends AbstractView implements Serializable {
 						for (Position p : o.getPositions()) {
 							if (StringUtils.equals(p.getName(), ProductsEnum.W2B.getLabel())) {
 								quantity = quantity + Integer.parseInt(p.getQuantity());
-								list.get(0).setCountTomorrow(list.get(0).getCountToday() - quantity);
+
 							}
 						}
 					}
+					list.get(0).setCountTomorrow(list.get(0).getCountToday() - quantity);
 				} else {
 					list.get(0).setCountTomorrow(list.get(0).getCountToday());
 				}
@@ -158,10 +157,11 @@ public class StartView extends AbstractView implements Serializable {
 						for (Position p : o.getPositions()) {
 							if (StringUtils.equals(p.getName(), ProductsEnum.W2B.getLabel())) {
 								quantity = quantity + Integer.parseInt(p.getQuantity());
-								list.get(0).setCountAfterTomorrow(list.get(0).getCountTomorrow() - quantity);
+
 							}
 						}
 					}
+					list.get(0).setCountAfterTomorrow(list.get(0).getCountTomorrow() - quantity);
 				} else {
 					list.get(0).setCountAfterTomorrow(list.get(0).getCountTomorrow());
 				}
@@ -172,10 +172,11 @@ public class StartView extends AbstractView implements Serializable {
 						for (Position p : o.getPositions()) {
 							if (StringUtils.equals(p.getName(), ProductsEnum.W2B.getLabel())) {
 								quantity = quantity + Integer.parseInt(p.getQuantity());
-								list.get(0).setCountAll(list.get(0).getStockCount() - quantity);
+
 							}
 						}
 					}
+					list.get(0).setCountAll(list.get(0).getStockCount() - quantity);
 				}
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -190,10 +191,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W5B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(1).setCountToday(list.get(1).getStockCount() - quantity);
+									// list.get(1).setCountToday(list.get(1).getStockCount() - quantity);
 								}
 							}
 						}
+						list.get(1).setCountToday(list.get(1).getStockCount() - quantity);
 					} else {
 						list.get(1).setCountToday(list.get(1).getStockCount());
 					}
@@ -204,10 +206,10 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W5B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(1).setCountTomorrow(list.get(1).getCountToday() - quantity);
 								}
 							}
 						}
+						list.get(1).setCountTomorrow(list.get(1).getCountToday() - quantity);
 					} else {
 						list.get(1).setCountTomorrow(list.get(1).getCountToday());
 					}
@@ -218,10 +220,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W5B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(1).setCountAfterTomorrow(list.get(1).getCountTomorrow() - quantity);
+									// list.get(1).setCountAfterTomorrow(list.get(1).getCountTomorrow() - quantity);
 								}
 							}
 						}
+						list.get(1).setCountAfterTomorrow(list.get(1).getCountTomorrow() - quantity);
 					} else {
 						list.get(1).setCountAfterTomorrow(list.get(1).getCountTomorrow());
 					}
@@ -232,9 +235,10 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W5B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(1).setCountAll(list.get(1).getStockCount() - quantity);
+									// list.get(1).setCountAll(list.get(1).getStockCount() - quantity);
 								}
 							}
+							list.get(1).setCountAll(list.get(1).getStockCount() - quantity);
 						}
 					}
 				}
@@ -250,10 +254,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W15B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(2).setCountToday(list.get(2).getStockCount() - quantity);
+
 								}
 							}
 						}
+						list.get(2).setCountToday(list.get(2).getStockCount() - quantity);
 					} else {
 						list.get(2).setCountToday(list.get(2).getStockCount());
 					}
@@ -264,10 +269,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W15B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(2).setCountTomorrow(list.get(2).getCountToday() - quantity);
+
 								}
 							}
 						}
+						list.get(2).setCountTomorrow(list.get(2).getCountToday() - quantity);
 					} else {
 						list.get(2).setCountTomorrow(list.get(2).getCountToday());
 					}
@@ -278,10 +284,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W15B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(2).setCountAfterTomorrow(list.get(2).getCountTomorrow() - quantity);
+
 								}
 							}
 						}
+						list.get(2).setCountAfterTomorrow(list.get(2).getCountTomorrow() - quantity);
 					} else {
 						list.get(2).setCountAfterTomorrow(list.get(2).getCountTomorrow());
 					}
@@ -292,10 +299,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W15B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(2).setCountAll(list.get(2).getStockCount() - quantity);
+
 								}
 							}
 						}
+						list.get(2).setCountAll(list.get(2).getStockCount() - quantity);
 					}
 
 				}
@@ -312,10 +320,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.WL.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(3).setCountToday(list.get(3).getStockCount() - quantity);
+
 								}
 							}
 						}
+						list.get(3).setCountToday(list.get(3).getStockCount() - quantity);
 					} else {
 						list.get(3).setCountToday(list.get(3).getStockCount());
 					}
@@ -326,10 +335,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.WL.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(3).setCountTomorrow(list.get(3).getCountToday() - quantity);
+
 								}
 							}
 						}
+						list.get(3).setCountTomorrow(list.get(3).getCountToday() - quantity);
 					} else {
 						list.get(3).setCountTomorrow(list.get(3).getCountToday());
 					}
@@ -340,10 +350,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.WL.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(3).setCountAfterTomorrow(list.get(3).getCountTomorrow() - quantity);
+
 								}
 							}
 						}
+						list.get(3).setCountAfterTomorrow(list.get(3).getCountTomorrow() - quantity);
 					} else {
 						list.get(3).setCountAfterTomorrow(list.get(3).getCountTomorrow());
 					}
@@ -354,10 +365,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.WL.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(3).setCountAll(list.get(3).getStockCount() - quantity);
+
 								}
 							}
 						}
+						list.get(3).setCountAll(list.get(3).getStockCount() - quantity);
 					}
 
 				}
@@ -374,10 +386,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C2B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(4).setCountToday(list.get(4).getStockCount() - quantity);
+
 								}
 							}
 						}
+						list.get(4).setCountToday(list.get(4).getStockCount() - quantity);
 					} else {
 						list.get(4).setCountToday(list.get(4).getStockCount());
 					}
@@ -388,10 +401,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C2B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(4).setCountTomorrow(list.get(4).getCountToday() - quantity);
+
 								}
 							}
 						}
+						list.get(4).setCountTomorrow(list.get(4).getCountToday() - quantity);
 					} else {
 						list.get(4).setCountTomorrow(list.get(4).getCountToday());
 					}
@@ -402,10 +416,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C2B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(4).setCountAfterTomorrow(list.get(4).getCountTomorrow() - quantity);
+
 								}
 							}
 						}
+						list.get(4).setCountAfterTomorrow(list.get(4).getCountTomorrow() - quantity);
 					} else {
 						list.get(4).setCountAfterTomorrow(list.get(4).getCountTomorrow());
 					}
@@ -416,10 +431,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C2B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(4).setCountAll(list.get(4).getStockCount() - quantity);
+
 								}
 							}
 						}
+						list.get(4).setCountAll(list.get(4).getStockCount() - quantity);
 					}
 
 				}
@@ -435,10 +451,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C5B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(5).setCountToday(list.get(5).getStockCount() - quantity);
+									// list.get(5).setCountToday(list.get(5).getStockCount() - quantity);
 								}
 							}
 						}
+						list.get(5).setCountToday(list.get(5).getStockCount() - quantity);
 					} else {
 						list.get(5).setCountToday(list.get(5).getStockCount());
 					}
@@ -449,10 +466,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C5B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(5).setCountTomorrow(list.get(5).getCountToday() - quantity);
+									// list.get(5).setCountTomorrow(list.get(5).getCountToday() - quantity);
 								}
 							}
 						}
+						list.get(5).setCountTomorrow(list.get(5).getCountToday() - quantity);
 					} else {
 						list.get(5).setCountTomorrow(list.get(5).getCountToday());
 					}
@@ -463,10 +481,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C5B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(5).setCountAfterTomorrow(list.get(5).getCountTomorrow() - quantity);
+									// list.get(5).setCountAfterTomorrow(list.get(5).getCountTomorrow() - quantity);
 								}
 							}
 						}
+						list.get(5).setCountAfterTomorrow(list.get(5).getCountTomorrow() - quantity);
 					} else {
 						list.get(5).setCountAfterTomorrow(list.get(5).getCountTomorrow());
 					}
@@ -477,10 +496,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C5B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(5).setCountAll(list.get(5).getStockCount() - quantity);
+									// list.get(5).setCountAll(list.get(5).getStockCount() - quantity);
 								}
 							}
 						}
+						list.get(5).setCountAll(list.get(5).getStockCount() - quantity);
 					}
 
 				}
@@ -496,10 +516,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C15B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(6).setCountToday(list.get(6).getStockCount() - quantity);
+
 								}
 							}
 						}
+						list.get(6).setCountToday(list.get(6).getStockCount() - quantity);
 					} else {
 						list.get(6).setCountToday(list.get(6).getStockCount());
 					}
@@ -510,10 +531,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C15B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(6).setCountTomorrow(list.get(6).getCountToday() - quantity);
+
 								}
 							}
 						}
+						list.get(6).setCountTomorrow(list.get(6).getCountToday() - quantity);
 					} else {
 						list.get(6).setCountTomorrow(list.get(6).getCountToday());
 					}
@@ -524,10 +546,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C15B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(6).setCountAfterTomorrow(list.get(6).getCountTomorrow() - quantity);
+
 								}
 							}
 						}
+						list.get(6).setCountAfterTomorrow(list.get(6).getCountTomorrow() - quantity);
 					} else {
 						list.get(6).setCountAfterTomorrow(list.get(6).getCountTomorrow());
 					}
@@ -538,10 +561,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.C15B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(6).setCountAll(list.get(6).getStockCount() - quantity);
+
 								}
 							}
 						}
+						list.get(6).setCountAll(list.get(6).getStockCount() - quantity);
 					}
 
 				}
@@ -557,10 +581,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.CL.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(7).setCountToday(list.get(7).getStockCount() - quantity);
+
 								}
 							}
 						}
+						list.get(7).setCountToday(list.get(7).getStockCount() - quantity);
 					} else {
 						list.get(7).setCountToday(list.get(7).getStockCount());
 					}
@@ -571,10 +596,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.CL.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(7).setCountTomorrow(list.get(7).getCountToday() - quantity);
+
 								}
 							}
 						}
+						list.get(7).setCountTomorrow(list.get(7).getCountToday() - quantity);
 					} else {
 						list.get(7).setCountTomorrow(list.get(7).getCountToday());
 					}
@@ -585,10 +611,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.CL.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(7).setCountAfterTomorrow(list.get(7).getCountTomorrow() - quantity);
+
 								}
 							}
 						}
+						list.get(7).setCountAfterTomorrow(list.get(7).getCountTomorrow() - quantity);
 					} else {
 						list.get(7).setCountAfterTomorrow(list.get(7).getCountTomorrow());
 					}
@@ -599,10 +626,11 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.CL.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									list.get(7).setCountAll(list.get(7).getStockCount() - quantity);
+
 								}
 							}
 						}
+						list.get(7).setCountAll(list.get(7).getStockCount() - quantity);
 					}
 				}
 			}
