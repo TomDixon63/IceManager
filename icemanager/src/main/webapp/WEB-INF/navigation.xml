@@ -9,31 +9,36 @@
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>start</from-outcome>
-			<to-view-id>start.xhtml</to-view-id>
+			<to-view-id>/start.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>orderstoday</from-outcome>
-			<to-view-id>orderstoday.xhtml</to-view-id>
+			<to-view-id>/orderstoday.xhtml</to-view-id>
 		</navigation-case>
 		
 		<navigation-case>
 			<from-outcome>orderstomorrow</from-outcome>
-			<to-view-id>orderstomorrow.xhtml</to-view-id>
+			<to-view-id>/orderstomorrow.xhtml</to-view-id>
 		</navigation-case>
 		
-			<navigation-case>
+		<navigation-case>
 			<from-outcome>ordersaftertomorrow</from-outcome>
-			<to-view-id>ordersaftertomorrow.xhtml</to-view-id>
+			<to-view-id>/ordersaftertomorrow.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>orders7days</from-outcome>
+			<to-view-id>/orders7days.xhtml</to-view-id>
 		</navigation-case>
 		
 		<navigation-case>
 			<from-outcome>ordersall</from-outcome>
-			<to-view-id>ordersall.xhtml</to-view-id>
+			<to-view-id>/ordersall.xhtml</to-view-id>
 		</navigation-case>
 		
 		<navigation-case>
 			<from-outcome>stock</from-outcome>
-			<to-view-id>stock.xhtml</to-view-id>
+			<to-view-id>/stock.xhtml</to-view-id>
 		</navigation-case>
 
 

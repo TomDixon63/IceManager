@@ -25,6 +25,9 @@ public class SessionData implements Serializable {
 	private List<OrderBase> ordersAfterTomorrow;
 	private int ordersAfterTomorrowSize;
 
+	private List<OrderBase> orders7Days;
+	private int orders7DaysSize;
+
 	private Stock stock;
 
 	@PostConstruct
@@ -32,6 +35,7 @@ public class SessionData implements Serializable {
 		ordersAll = new ArrayList<OrderBase>();
 		ordersToday = new ArrayList<OrderBase>();
 		ordersTomorrow = new ArrayList<OrderBase>();
+		orders7Days = new ArrayList<OrderBase>();
 		ordersAfterTomorrow = new ArrayList<OrderBase>();
 		stock = new Stock();
 	}
@@ -98,6 +102,22 @@ public class SessionData implements Serializable {
 
 	public void setOrdersAfterTomorrowSize(int ordersAfterTomorrowSize) {
 		this.ordersAfterTomorrowSize = ordersAfterTomorrowSize;
+	}
+
+	public List<OrderBase> getOrders7Days() {
+		return orders7Days;
+	}
+
+	public void setOrders7Days(List<OrderBase> orders7Days) {
+		this.orders7Days = orders7Days;
+	}
+
+	public int getOrders7DaysSize() {
+		return orders7DaysSize;
+	}
+
+	public void setOrders7DaysSize(int orders7DaysSize) {
+		this.orders7DaysSize = orders7DaysSize;
 	}
 
 	public Stock getStock() {

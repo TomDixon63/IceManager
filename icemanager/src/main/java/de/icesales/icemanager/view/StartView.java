@@ -43,11 +43,13 @@ public class StartView extends AbstractView implements Serializable {
 	List<OrderBase> ordersTodayProcessed;
 	List<OrderBase> ordersTommorowProcessed;
 	List<OrderBase> ordersAfterTommorowProcessed;
+	List<OrderBase> orders7DaysProcessed;
 	List<OrderBase> ordersAllProcessed;
 
 	private int ordersToday;
 	private int ordersTommorow;
 	private int ordersAfterTommorow;
+	private int orders7Days;
 	private int ordersAll;
 
 	public void init() {
@@ -55,6 +57,7 @@ public class StartView extends AbstractView implements Serializable {
 		ordersTodayProcessed = new ArrayList<OrderBase>();
 		ordersTommorowProcessed = new ArrayList<OrderBase>();
 		ordersAfterTommorowProcessed = new ArrayList<OrderBase>();
+		orders7DaysProcessed = new ArrayList<OrderBase>();
 		ordersAllProcessed = new ArrayList<OrderBase>();
 
 		fetchBestand();
@@ -102,6 +105,10 @@ public class StartView extends AbstractView implements Serializable {
 			getSessionData().setOrdersAfterTomorrow(ordersAfterTommorowProcessed);
 			ordersAfterTommorow = ordersAfterTommorowProcessed.size();
 
+			orders7DaysProcessed = ordersWorker.processOrders7Days(ordersAllProcessed);
+			getSessionData().setOrders7Days(orders7DaysProcessed);
+			orders7Days = orders7DaysProcessed.size();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			facesContext.addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -121,6 +128,7 @@ public class StartView extends AbstractView implements Serializable {
 				// W2B
 				list.get(0).setStockCount(stock.getW2BCount());
 
+				// today
 				if (!ordersTodayProcessed.isEmpty()) {
 					int quantity = 0;
 					for (OrderBase o : ordersTodayProcessed) {
@@ -136,6 +144,7 @@ public class StartView extends AbstractView implements Serializable {
 					list.get(0).setCountToday(list.get(0).getStockCount());
 				}
 
+				// tommorow
 				if (!ordersTommorowProcessed.isEmpty()) {
 					int quantity = 0;
 					for (OrderBase o : ordersTommorowProcessed) {
@@ -151,13 +160,13 @@ public class StartView extends AbstractView implements Serializable {
 					list.get(0).setCountTomorrow(list.get(0).getCountToday());
 				}
 
+				// aftertommorow
 				if (!ordersAfterTommorowProcessed.isEmpty()) {
 					int quantity = 0;
 					for (OrderBase o : ordersAfterTommorowProcessed) {
 						for (Position p : o.getPositions()) {
 							if (StringUtils.equals(p.getName(), ProductsEnum.W2B.getLabel())) {
 								quantity = quantity + Integer.parseInt(p.getQuantity());
-
 							}
 						}
 					}
@@ -166,6 +175,22 @@ public class StartView extends AbstractView implements Serializable {
 					list.get(0).setCountAfterTomorrow(list.get(0).getCountTomorrow());
 				}
 
+				// 7 days
+				if (!orders7DaysProcessed.isEmpty()) {
+					int quantity = 0;
+					for (OrderBase o : orders7DaysProcessed) {
+						for (Position p : o.getPositions()) {
+							if (StringUtils.equals(p.getName(), ProductsEnum.W2B.getLabel())) {
+								quantity = quantity + Integer.parseInt(p.getQuantity());
+							}
+						}
+					}
+					list.get(0).setCount7days(list.get(0).getCount7days() - quantity);
+				} else {
+					list.get(0).setCount7days(list.get(0).getCount7days());
+				}
+
+				// all
 				if (!ordersAllProcessed.isEmpty()) {
 					int quantity = 0;
 					for (OrderBase o : ordersAllProcessed) {
@@ -229,13 +254,28 @@ public class StartView extends AbstractView implements Serializable {
 						list.get(1).setCountAfterTomorrow(list.get(1).getCountTomorrow());
 					}
 
+					// 7 days
+					if (!orders7DaysProcessed.isEmpty()) {
+						int quantity = 0;
+						for (OrderBase o : orders7DaysProcessed) {
+							for (Position p : o.getPositions()) {
+								if (StringUtils.equals(p.getName(), ProductsEnum.W5B.getLabel())) {
+									quantity = quantity + Integer.parseInt(p.getQuantity());
+								}
+							}
+						}
+						list.get(1).setCount7days(list.get(1).getCount7days() - quantity);
+					} else {
+						list.get(1).setCount7days(list.get(1).getCount7days());
+					}
+
+					// all
 					if (!ordersAllProcessed.isEmpty()) {
 						int quantity = 0;
 						for (OrderBase o : ordersAllProcessed) {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W5B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-									// list.get(1).setCountAll(list.get(1).getStockCount() - quantity);
 								}
 							}
 							list.get(1).setCountAll(list.get(1).getStockCount() - quantity);
@@ -269,7 +309,6 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W15B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-
 								}
 							}
 						}
@@ -284,7 +323,6 @@ public class StartView extends AbstractView implements Serializable {
 							for (Position p : o.getPositions()) {
 								if (StringUtils.equals(p.getName(), ProductsEnum.W15B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
-
 								}
 							}
 						}
@@ -293,6 +331,22 @@ public class StartView extends AbstractView implements Serializable {
 						list.get(2).setCountAfterTomorrow(list.get(2).getCountTomorrow());
 					}
 
+					// 7 days
+					if (!orders7DaysProcessed.isEmpty()) {
+						int quantity = 0;
+						for (OrderBase o : orders7DaysProcessed) {
+							for (Position p : o.getPositions()) {
+								if (StringUtils.equals(p.getName(), ProductsEnum.W15B.getLabel())) {
+									quantity = quantity + Integer.parseInt(p.getQuantity());
+								}
+							}
+						}
+						list.get(2).setCount7days(list.get(2).getCount7days() - quantity);
+					} else {
+						list.get(2).setCount7days(list.get(2).getCount7days());
+					}
+
+					// all
 					if (!ordersAllProcessed.isEmpty()) {
 						int quantity = 0;
 						for (OrderBase o : ordersAllProcessed) {
@@ -359,6 +413,22 @@ public class StartView extends AbstractView implements Serializable {
 						list.get(3).setCountAfterTomorrow(list.get(3).getCountTomorrow());
 					}
 
+					// 7 days
+					if (!orders7DaysProcessed.isEmpty()) {
+						int quantity = 0;
+						for (OrderBase o : orders7DaysProcessed) {
+							for (Position p : o.getPositions()) {
+								if (StringUtils.equals(p.getName(), ProductsEnum.WL.getLabel())) {
+									quantity = quantity + Integer.parseInt(p.getQuantity());
+								}
+							}
+						}
+						list.get(3).setCount7days(list.get(3).getCount7days() - quantity);
+					} else {
+						list.get(3).setCount7days(list.get(3).getCount7days());
+					}
+
+					// all
 					if (!ordersAllProcessed.isEmpty()) {
 						int quantity = 0;
 						for (OrderBase o : ordersAllProcessed) {
@@ -425,6 +495,22 @@ public class StartView extends AbstractView implements Serializable {
 						list.get(4).setCountAfterTomorrow(list.get(4).getCountTomorrow());
 					}
 
+					// 7 days
+					if (!orders7DaysProcessed.isEmpty()) {
+						int quantity = 0;
+						for (OrderBase o : orders7DaysProcessed) {
+							for (Position p : o.getPositions()) {
+								if (StringUtils.equals(p.getName(), ProductsEnum.C2B.getLabel())) {
+									quantity = quantity + Integer.parseInt(p.getQuantity());
+								}
+							}
+						}
+						list.get(4).setCount7days(list.get(4).getCount7days() - quantity);
+					} else {
+						list.get(4).setCount7days(list.get(4).getCount7days());
+					}
+
+					// all
 					if (!ordersAllProcessed.isEmpty()) {
 						int quantity = 0;
 						for (OrderBase o : ordersAllProcessed) {
@@ -490,6 +576,22 @@ public class StartView extends AbstractView implements Serializable {
 						list.get(5).setCountAfterTomorrow(list.get(5).getCountTomorrow());
 					}
 
+					// 7 days
+					if (!orders7DaysProcessed.isEmpty()) {
+						int quantity = 0;
+						for (OrderBase o : orders7DaysProcessed) {
+							for (Position p : o.getPositions()) {
+								if (StringUtils.equals(p.getName(), ProductsEnum.C5B.getLabel())) {
+									quantity = quantity + Integer.parseInt(p.getQuantity());
+								}
+							}
+						}
+						list.get(5).setCount7days(list.get(5).getCount7days() - quantity);
+					} else {
+						list.get(5).setCount7days(list.get(5).getCount7days());
+					}
+
+					// all
 					if (!ordersAllProcessed.isEmpty()) {
 						int quantity = 0;
 						for (OrderBase o : ordersAllProcessed) {
@@ -555,11 +657,27 @@ public class StartView extends AbstractView implements Serializable {
 						list.get(6).setCountAfterTomorrow(list.get(6).getCountTomorrow());
 					}
 
+					// 7 days
+					if (!orders7DaysProcessed.isEmpty()) {
+						int quantity = 0;
+						for (OrderBase o : orders7DaysProcessed) {
+							for (Position p : o.getPositions()) {
+								if (StringUtils.equals(p.getName(), ProductsEnum.C15B.getLabel())) {
+									quantity = quantity + Integer.parseInt(p.getQuantity());
+								}
+							}
+						}
+						list.get(6).setCount7days(list.get(6).getCount7days() - quantity);
+					} else {
+						list.get(6).setCount7days(list.get(6).getCount7days());
+					}
+
+					// all
 					if (!ordersAllProcessed.isEmpty()) {
 						int quantity = 0;
 						for (OrderBase o : ordersAllProcessed) {
 							for (Position p : o.getPositions()) {
-								if (StringUtils.equals(p.getName(), ProductsEnum.C15B.getLabel())) {
+								if (StringUtils.equals(p.getName(), ProductsEnum.C5B.getLabel())) {
 									quantity = quantity + Integer.parseInt(p.getQuantity());
 
 								}
@@ -620,6 +738,22 @@ public class StartView extends AbstractView implements Serializable {
 						list.get(7).setCountAfterTomorrow(list.get(7).getCountTomorrow());
 					}
 
+					// 7 days
+					if (!orders7DaysProcessed.isEmpty()) {
+						int quantity = 0;
+						for (OrderBase o : orders7DaysProcessed) {
+							for (Position p : o.getPositions()) {
+								if (StringUtils.equals(p.getName(), ProductsEnum.CL.getLabel())) {
+									quantity = quantity + Integer.parseInt(p.getQuantity());
+								}
+							}
+						}
+						list.get(7).setCount7days(list.get(7).getCount7days() - quantity);
+					} else {
+						list.get(7).setCount7days(list.get(7).getCount7days());
+					}
+
+					// all
 					if (!ordersAllProcessed.isEmpty()) {
 						int quantity = 0;
 						for (OrderBase o : ordersAllProcessed) {
@@ -641,28 +775,28 @@ public class StartView extends AbstractView implements Serializable {
 	private void initStockOverview() {
 		stockOverviewList = new ArrayList<StockOverview>();
 
-		StockOverview id0 = new StockOverview(0, ProductsEnum.W2B.getLabel(), 0, 0, 0, 0, 0);
+		StockOverview id0 = new StockOverview(0, ProductsEnum.W2B.getLabel(), 0, 0, 0, 0, 0, 0);
 		stockOverviewList.add(id0);
 
-		StockOverview id1 = new StockOverview(1, ProductsEnum.W5B.getLabel(), 0, 0, 0, 0, 0);
+		StockOverview id1 = new StockOverview(1, ProductsEnum.W5B.getLabel(), 0, 0, 0, 0, 0, 0);
 		stockOverviewList.add(id1);
 
-		StockOverview id2 = new StockOverview(2, ProductsEnum.W15B.getLabel(), 0, 0, 0, 0, 0);
+		StockOverview id2 = new StockOverview(2, ProductsEnum.W15B.getLabel(), 0, 0, 0, 0, 0, 0);
 		stockOverviewList.add(id2);
 
-		StockOverview id3 = new StockOverview(3, ProductsEnum.WL.getLabel(), 0, 0, 0, 0, 0);
+		StockOverview id3 = new StockOverview(3, ProductsEnum.WL.getLabel(), 0, 0, 0, 0, 0, 0);
 		stockOverviewList.add(id3);
 
-		StockOverview id4 = new StockOverview(4, ProductsEnum.C2B.getLabel(), 0, 0, 0, 0, 0);
+		StockOverview id4 = new StockOverview(4, ProductsEnum.C2B.getLabel(), 0, 0, 0, 0, 0, 0);
 		stockOverviewList.add(id4);
 
-		StockOverview id5 = new StockOverview(5, ProductsEnum.C5B.getLabel(), 0, 0, 0, 0, 0);
+		StockOverview id5 = new StockOverview(5, ProductsEnum.C5B.getLabel(), 0, 0, 0, 0, 0, 0);
 		stockOverviewList.add(id5);
 
-		StockOverview id6 = new StockOverview(6, ProductsEnum.C15B.getLabel(), 0, 0, 0, 0, 0);
+		StockOverview id6 = new StockOverview(6, ProductsEnum.C15B.getLabel(), 0, 0, 0, 0, 0, 0);
 		stockOverviewList.add(id6);
 
-		StockOverview id7 = new StockOverview(7, ProductsEnum.CL.getLabel(), 0, 0, 0, 0, 0);
+		StockOverview id7 = new StockOverview(7, ProductsEnum.CL.getLabel(), 0, 0, 0, 0, 0, 0);
 		stockOverviewList.add(id7);
 	}
 
@@ -704,6 +838,14 @@ public class StartView extends AbstractView implements Serializable {
 
 	public void setOrdersAll(int ordersAll) {
 		this.ordersAll = ordersAll;
+	}
+
+	public int getOrders7Days() {
+		return orders7Days;
+	}
+
+	public void setOrders7Days(int orders7Days) {
+		this.orders7Days = orders7Days;
 	}
 
 }

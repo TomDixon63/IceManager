@@ -16,6 +16,8 @@ public class StockOverview implements Serializable {
 
 	private int countAfterTomorrow;
 
+	private int count7days;
+
 	private int countAll;
 
 	public StockOverview() {
@@ -23,7 +25,7 @@ public class StockOverview implements Serializable {
 	}
 
 	public StockOverview(int id, String product, int stockCount, int countToday, int countTomorrow,
-			int countAfterTomorrow, int countAll) {
+			int countAfterTomorrow, int count7days, int countAll) {
 		super();
 		this.id = id;
 		this.product = product;
@@ -31,6 +33,7 @@ public class StockOverview implements Serializable {
 		this.countToday = countToday;
 		this.countTomorrow = countTomorrow;
 		this.countAfterTomorrow = countAfterTomorrow;
+		this.count7days = count7days;
 		this.countAll = countAll;
 	}
 
@@ -88,6 +91,14 @@ public class StockOverview implements Serializable {
 
 	public void setCountAll(int countAll) {
 		this.countAll = countAll;
+	}
+
+	public int getCount7days() {
+		return count7days;
+	}
+
+	public void setCount7days(int count7days) {
+		this.count7days = count7days;
 	}
 
 }

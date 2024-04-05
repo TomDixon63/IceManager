@@ -68,8 +68,8 @@ public class OrdersWorker {
 
 			} catch (DateTimeParseException e) {
 				// TODO replace with log
-				e.printStackTrace();
-				System.out.println("DateTimeParseException -> " + o.getAddress());
+//				e.printStackTrace();
+//				System.out.println("DateTimeParseException -> " + o.getAddress());
 			}
 		}
 		return list;
@@ -91,8 +91,8 @@ public class OrdersWorker {
 
 			} catch (DateTimeParseException e) {
 				// TODO replace with log
-				e.printStackTrace();
-				System.out.println("DateTimeParseException -> " + o.getAddress());
+//				e.printStackTrace();
+//				System.out.println("DateTimeParseException -> " + o.getAddress());
 			}
 		}
 		return list;
@@ -114,8 +114,31 @@ public class OrdersWorker {
 
 			} catch (DateTimeParseException e) {
 				// TODO replace with log
-				e.printStackTrace();
-				System.out.println("DateTimeParseException -> " + o.getAddress());
+//				e.printStackTrace();
+//				System.out.println("DateTimeParseException -> " + o.getAddress());
+			}
+		}
+		return list;
+	}
+
+	// orders 7 days
+	public List<OrderBase> processOrders7Days(List<OrderBase> orders) {
+
+		List<OrderBase> list = new ArrayList<OrderBase>();
+
+		List<OrderBase> filteredList = filterOrders(orders);
+
+		for (OrderBase o : filteredList) {
+			LocalDate deliveryTermsDate = null;
+			try {
+				deliveryTermsDate = LocalDate.parse(o.getDeliveryTerms(), dateTimeFormatter);
+				if (!deliveryTermsDate.isBefore(today) && deliveryTermsDate.isBefore(today.plusDays(7)))
+					list.add(o);
+
+			} catch (DateTimeParseException e) {
+				// TODO replace with log
+//				e.printStackTrace();
+//				System.out.println("DateTimeParseException -> " + o.getAddress());
 			}
 		}
 		return list;
