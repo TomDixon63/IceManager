@@ -12,7 +12,16 @@
 
 	<ui:define name="content">
 
-		<ice:productsOverview />
+			<ice:productsOverview 
+			w2B="#{ordersAllView.w2B}" 
+			w5B="#{ordersAllView.w5B}"
+			w15B="#{ordersAllView.w15B}"
+			wL="#{ordersAllView.wL}"
+			c2B="#{ordersAllView.c2B}"
+			c5B="#{ordersAllView.c5B}"
+			c15B="#{ordersAllView.c15B}"
+			cL="#{ordersAllView.cL}"
+			/>
 
 		<ice:ordersTable
 			value="#{ordersAllView.orders}"

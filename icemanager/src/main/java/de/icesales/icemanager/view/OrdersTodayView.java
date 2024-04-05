@@ -18,6 +18,7 @@ public class OrdersTodayView extends AbstractView implements Serializable {
 	public void postConstruct() {
 		orders = getSessionData().getOrdersToday();
 		ordersSize = orders.size();
+		calculate(orders);
 	}
 
 	public List<OrderBase> getOrders() {

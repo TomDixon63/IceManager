@@ -42,8 +42,8 @@ public class OrdersWorker {
 
 			} catch (DateTimeParseException e) {
 				// TODO replace with log
-				e.printStackTrace();
-				System.out.println("DateTimeParseException -> " + o.getAddress());
+				// e.printStackTrace();
+				// System.out.println("DateTimeParseException -> " + o.getAddress());
 			}
 		}
 		return list;

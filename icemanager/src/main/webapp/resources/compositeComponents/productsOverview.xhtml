@@ -11,8 +11,81 @@
 </head>
 <h:body>
 	<composite:interface shortDescription="Products overview panel" />
+
+	<composite:attribute
+		name="w2B"
+		required="true" />
+	<composite:attribute
+		name="w5B"
+		required="true" />	
+	<composite:attribute
+		name="w15B"
+		required="true" />	
+	<composite:attribute
+		name="wL"
+		required="true" />	
+		
+	<composite:attribute
+		name="c2B"
+		required="true" />	
+	<composite:attribute
+		name="c5B"
+		required="true" />
+	<composite:attribute
+		name="c15B"
+		required="true" />	
+	<composite:attribute
+		name="cL"
+		required="true" />						
+		
+
 	<composite:implementation>
 
+		<div
+			class="flex align-items-center flex-wrap"
+			style="margin-bottom: 2rem">
+
+			<p:panel style="padding: 0.5rem">
+				<span>2kg Würfel: </span>
+				<span style="color: orange">#{cc.attrs.w2B}</span>
+			</p:panel>
+
+			<p:panel style="padding: 0.5rem">
+				<span>5kg Würfel: </span>
+				<span style="color: orange">#{cc.attrs.w5B}</span>
+			</p:panel>
+
+			<p:panel style="padding: 0.5rem">
+				<span>15kg Würfel: </span>
+				<span style="color: orange">#{cc.attrs.w15B}</span>
+			</p:panel>
+
+			<p:panel style="padding: 0.5rem">
+				<span>Würfel (kg): </span>
+				<span style="color: orange">#{cc.attrs.wL}</span>
+			</p:panel>
+
+			<p:panel style="padding: 0.5rem; margin-left:4rem">
+				<span>2kg Crush: </span>
+				<span style="color: orange">#{cc.attrs.c2B}</span>
+			</p:panel>
+
+			<p:panel style="padding: 0.5rem">
+				<span>5kg Crush: </span>
+					<span style="color: orange">#{cc.attrs.c5B}</span>
+			</p:panel>
+
+			<p:panel style="padding: 0.5rem">
+				<span>15kg Crush: </span>
+					<span style="color: orange">#{cc.attrs.c15B}</span>
+			</p:panel>
+
+			<p:panel style="padding: 0.5rem">
+				<span>Crush (kg): </span>
+					<span style="color: orange">#{cc.attrs.cL}</span>
+			</p:panel>
+
+		</div>
 
 	</composite:implementation>
 </h:body>
