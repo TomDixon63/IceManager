@@ -34,14 +34,14 @@ public class Stock implements Serializable {
 
 	// int because of mapping problems if string
 	@JsonProperty("lastupdate")
-	private int lastupdate;
+	private String lastupdate;
 
 	public Stock() {
 
 	}
 
 	public Stock(int w2bCount, int w5bCount, int w15bCount, int wlCount, int c2bCount, int c5bCount, int c15bCount,
-			int clCount, int lastupdate) {
+			int clCount, String lastupdate) {
 		super();
 		w2BCount = w2bCount;
 		w5BCount = w5bCount;
@@ -118,11 +118,11 @@ public class Stock implements Serializable {
 		this.clCount = clCount;
 	}
 
-	public int getLastupdate() {
+	public String getLastupdate() {
 		return lastupdate;
 	}
 
-	public void setLastupdate(int lastupdate) {
+	public void setLastupdate(String lastupdate) {
 		this.lastupdate = lastupdate;
 	}
 

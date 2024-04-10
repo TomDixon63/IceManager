@@ -37,9 +37,7 @@ public class StockView extends AbstractView implements Serializable {
 	private void saveStock() {
 		String lastUpdate = StringUtils.remove(Util.getLocalDateTodayNowAsString(), ".");
 		try {
-
-			int lastUpdateAsInt = Integer.parseInt(lastUpdate);
-			stock.setLastupdate(lastUpdateAsInt);
+			stock.setLastupdate(lastUpdate);
 			stockService.saveStock(stock);
 			getSessionData().setStock(stock);
 
@@ -67,7 +65,11 @@ public class StockView extends AbstractView implements Serializable {
 	}
 
 	public String getLastUpdate() {
-		String lu = String.valueOf(stock.getLastupdate());
+		if (stock == null || StringUtils.isEmpty(stock.getLastupdate())) {
+			return "";
+		}
+		// String lu = String.valueOf(stock.getLastupdate());
+		String lu = stock.getLastupdate();
 		String day = lu.substring(0, 2);
 		String month = lu.substring(2, 4);
 		String year = lu.substring(4, 8);

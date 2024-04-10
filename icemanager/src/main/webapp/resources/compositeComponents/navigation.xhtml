@@ -13,44 +13,62 @@
 	<composite:interface shortDescription="Page header" />
 	<composite:implementation>
 
+		<style>
+body .ui-menu .ui-menu-list .ui-menuitem .ui-menuitem-link.ui-state-hover
+	{
+	background: orange;
+}
+
+.active {
+	background: orange;
+}
+</style>
+
 		<h:form id="navi">
-		
+
 			<p:menu style="width: 15rem; border:none">
 				<p:submenu>
 					<p:menuitem
 						value="Startseite"
 						outcome="start"
-						icon="pi pi-home" />
+						icon="pi pi-home"
+						styleClass="#{view.viewId.contains('start') ? 'active' : ''}" />
 					<p:menuitem
 						value="Bestellungen heute"
 						outcome="orderstoday"
-						icon="pi pi-angle-right" />
+						icon="pi pi-angle-right"
+						styleClass="#{view.viewId.contains('orderstoday') ? 'active' : ''}" />
 					<p:menuitem
 						value="Bestellungen morgen"
 						outcome="orderstomorrow"
-						icon="pi pi-angle-right" />
+						icon="pi pi-angle-right"
+						styleClass="#{view.viewId.contains('orderstomorrow') ? 'active' : ''}" />
 					<p:menuitem
 						value="Bestellungen übermorgen"
 						outcome="ordersaftertomorrow"
-						icon="pi pi-angle-right" />	
+						icon="pi pi-angle-right"
+						styleClass="#{view.viewId.contains('ordersaftertomorrow') ? 'active' : ''}" />
 					<p:menuitem
 						value="Bestellungen 7 Tage"
 						outcome="orders7days"
-						icon="pi pi-angle-right" />		
+						icon="pi pi-angle-right"
+						styleClass="#{view.viewId.contains('orders7days') ? 'active' : ''}" />
 					<p:menuitem
 						value="Alle Bestellungen"
 						outcome="ordersall"
-						icon="pi pi-angle-right" />		
+						icon="pi pi-angle-right"
+						styleClass="#{view.viewId.contains('ordersall') ? 'active' : ''}" />
 					<p:menuitem
 						value="Lagerbestand"
 						outcome="stock"
-						icon="pi pi-box" />				
+						icon="pi pi-box"
+						styleClass="#{view.viewId.contains('stock') ? 'active' : ''}" />
 				</p:submenu>
 
 			</p:menu>
-	
+
 		</h:form>
-		
+
 	</composite:implementation>
 </h:body>
 </html>
