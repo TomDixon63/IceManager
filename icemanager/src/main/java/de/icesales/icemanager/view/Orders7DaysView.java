@@ -16,7 +16,7 @@ public class Orders7DaysView extends AbstractView implements Serializable {
 
 	@PostConstruct
 	public void postConstruct() {
-		orders = getSessionData().getOrdersToday();
+		orders = getSessionData().getOrders7Days();
 		ordersSize = orders.size();
 		calculate(orders);
 	}
